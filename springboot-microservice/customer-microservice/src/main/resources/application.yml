@@ -1,0 +1,25 @@
+server:
+  port: 9093
+  
+spring:
+  application:
+    name: product
+  jpa:
+    hibernate:      ddl-auto: update
+    properties:      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+  datasource:
+    url: jdbc:mysql://localhost:3308/customerdb?allowPublicKeyRetrieval=true&sslMode=DISABLED
+    username: root
+    password: root
+    
+eureka:
+  instance:
+    prefer-ip-address: true
+    appname: customer
+  client:
+    service-url:
+      defaultZone: http://localhost:9080/eureka/
+    register-with-eureka: true
+    fetch-registry: true
+    

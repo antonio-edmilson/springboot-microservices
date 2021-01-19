@@ -9,7 +9,7 @@ spring:
     properties:      hibernate:
         dialect: org.hibernate.dialect.MySQL8Dialect
   datasource:
-    url: jdbc:mysql://localhost:3308/customerdb?allowPublicKeyRetrieval=true&sslMode=DISABLED
+    url: jdbc:mysql://mysqlserver-customerdb:3308/customerdb?allowPublicKeyRetrieval=true&sslMode=DISABLED&createDatabaseIfNotExist=true
     username: root
     password: root
     
@@ -19,7 +19,7 @@ eureka:
     appname: customer
   client:
     service-url:
-      defaultZone: http://localhost:9080/eureka/
+      defaultZone: http://discovery-eureka:9080/eureka/
     register-with-eureka: true
     fetch-registry: true
     

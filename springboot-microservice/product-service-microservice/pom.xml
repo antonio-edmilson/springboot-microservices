@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>br.com.andrade.product</groupId>
-	<artifactId>products-service</artifactId>
+	<artifactId>product-microservice</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>products-service</name>
+	<name>product-microservice</name>
 	<description>Products Microservices Hotmart Challenge</description>
 
 	<properties>

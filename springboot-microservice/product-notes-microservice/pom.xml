@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>br.com.andrade.productnotes</groupId>
-	<artifactId>product-notes</artifactId>
+	<artifactId>product-notes-microservice</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>product-notes</name>
+	<name>product-notes-microservice</name>
 	<description>Product Notes - Hotmart Challenge</description>
 
 	<properties>

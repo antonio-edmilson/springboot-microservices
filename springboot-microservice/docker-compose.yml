@@ -1,0 +1,250 @@
+version: '3'
+
+services:  
+  discovery-eureka: 
+    build:
+      context: ./discovery-eureka
+      dockerfile: Dockerfile
+    image: discovery-eureka
+    container_name: discovery-eureka
+    ports:
+      - "9080:9080"
+    restart: always
+    
+  gateway:
+    build:
+      context: ./gateway-service
+      dockerfile: Dockerfile 
+    image: gateway
+    container_name: gateway
+    ports:
+      - "8080:8080"
+    restart: always
+    depends_on: 
+      - discovery-eureka 
+    links:
+      - discovery-eureka
+    
+  product-microservice: 
+    build:
+      context: ./product-service-microservice
+      dockerfile: Dockerfile
+    image: product-microservice
+    container_name: product-microservice
+    ports:
+      - "9090:9090"
+    restart: always
+    depends_on: 
+      - mysqlserver-productdb
+      - discovery-eureka
+      - gateway
+      
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysqlserver-productdb:3306/productdb?useSSL=false&serverTimezone=UTC&useLegacyDatetimeCode=false&createDatabaseIfNotExist=true
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+      SPRING_DATASOURCE_DATABASE: productdb   
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://discovery-eureka:9080/eureka
+    links:
+      - mysqlserver-productdb
+      - discovery-eureka
+  customer-microservice: 
+    build:
+      context: ./customer-microservice
+      dockerfile: Dockerfile
+    image: customer-microservice
+    container_name: customer-microservice
+    ports:
+      - "9093:9093"
+    restart: always
+    depends_on: 
+      - mysqlserver-customerdb
+      - discovery-eureka
+      - gateway      
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysqlserver-customerdb:3308/customerdb?useSSL=false&serverTimezone=UTC&useLegacyDatetimeCode=false&createDatabaseIfNotExist=true
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+      SPRING_DATASOURCE_DATABASE: customerdb   
+    links:
+      - mysqlserver-customerdb
+      - discovery-eureka
+  product-category-microservice: 
+    build:
+      context: ./product-category-microservice
+      dockerfile: Dockerfile
+    image: product-category-microservice
+    container_name: product-category-microservice
+    ports:
+      - "9094:9094"
+    restart: always
+    depends_on: 
+      - mysqlserver-product_categorydb
+      - discovery-eureka
+      - gateway 
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysqlserver-product_categorydb:3309/product_categorydb?useSSL=false&serverTimezone=UTC&useLegacyDatetimeCode=false&createDatabaseIfNotExist=true
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+      SPRING_DATASOURCE_DATABASE: product_categorydb   
+    links:
+      - mysqlserver-product_categorydb
+      - discovery-eureka
+      
+  productnote-microservice: 
+    build:
+      context: ./product-notes-microservice
+      dockerfile: Dockerfile
+    image: productnote-microservice
+    container_name: productnote-microservice
+    ports:
+      - "9095:9095"
+    restart: always
+    depends_on: 
+      - mysqlserver-productnotedb 
+      - discovery-eureka
+      - gateway
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysqlserver-productnotedb:3311/productnotedb?useSSL=false&serverTimezone=UTC&useLegacyDatetimeCode=false&createDatabaseIfNotExist=true
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+      SPRING_DATASOURCE_DATABASE: productnotedb   
+    links:
+      - mysqlserver-productnotedb
+      - discovery-eureka
+      
+  sale-microservice: 
+    build:
+      context: ./sale-microservice
+      dockerfile: Dockerfile
+    image: sale-microservice
+    container_name: sale-microservice
+    ports:
+      - "9091:9091"
+    restart: always
+    depends_on: 
+      - mysqlserver-saledb
+      - discovery-eureka
+      - gateway
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysqlserver-saledb:3307/saledb?useSSL=false&serverTimezone=UTC&useLegacyDatetimeCode=false&createDatabaseIfNotExist=true
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+      SPRING_DATASOURCE_DATABASE: saledb   
+    links:
+      - mysqlserver-saledb
+      - discovery-eureka   
+      
+  salesman-microservice: 
+    build:
+      context: ./salesman-microservice
+      dockerfile: Dockerfile
+    image: salesmandb-microservice
+    container_name: salesmandb-microservice
+    ports:
+      - "9092:9092"
+    restart: always
+    depends_on: 
+      - mysqlserver-salesmandb 
+      - discovery-eureka
+      - gateway
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysqlserver-salesmandb:3310/salesmandb?useSSL=false&serverTimezone=UTC&useLegacyDatetimeCode=false&createDatabaseIfNotExist=true
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+      SPRING_DATASOURCE_DATABASE: salesmandb  
+    links:
+      - mysqlserver-salesmandb
+      - discovery-eureka
+      
+  mysqlserver-salesmandb:
+    image: mysql:latest
+    command: --default-authentication-plugin=mysql_native_password
+    container_name: mysqlserver-salesmandb
+    ports:
+      - 3310:3306
+    environment:
+      MYSQL_USER: root
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: salesmandb  
+      MYSQL_TCP_PORT: 3310
+    volumes:
+      - microservice_salesmandb:/var/lib/mysql
+      
+  mysqlserver-saledb:
+    image: mysql:latest
+    command: --default-authentication-plugin=mysql_native_password
+    container_name: mysqlserver-saledb
+    ports:
+      - 3307:3306
+    environment:
+      MYSQL_USER: root
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: saledb
+      MYSQL_TCP_PORT: 3307      
+    volumes:
+      - mysqlserver_sale:/var/lib/mysql
+
+  mysqlserver-productnotedb:
+    image: mysql:latest
+    command: --default-authentication-plugin=mysql_native_password
+    container_name: mysqlserver-productnotedb
+    ports:
+      - 3311:3306
+    environment:
+      MYSQL_USER: root
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: productnotedb
+      MYSQL_TCP_PORT: 3311
+    volumes:
+      - microservice_productnote:/var/lib/mysql
+      
+  mysqlserver-product_categorydb:
+    image: mysql:latest
+    command: --default-authentication-plugin=mysql_native_password
+    container_name: mysqlserver-product_categorydb
+    ports:
+      - 3309:3306
+    environment:
+      MYSQL_USER: root
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: product_categorydb 
+      MYSQL_TCP_PORT: 3309
+    volumes:
+      - microservice_product_category:/var/lib/mysql
+      
+  mysqlserver-customerdb:
+    image: mysql:latest
+    command: --default-authentication-plugin=mysql_native_password
+    container_name: mysqlserver-customerdb
+    ports:
+      - 3308:3306
+    environment:
+      MYSQL_USER: root
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: customerdb
+      MYSQL_TCP_PORT: 3308      
+    volumes:
+      - microservice_customer:/var/lib/mysql
+      
+  mysqlserver-productdb:
+    image: mysql:latest
+    command: --default-authentication-plugin=mysql_native_password
+    container_name: mysqlserver-productdb
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_USER: root
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: productdb
+      MYSQL_TCP_PORT: 3306      
+    volumes:
+      - microservice_product:/var/lib/mysql
+
+volumes:
+  microservice_product:
+  microservice_customer:
+  microservice_product_category:
+  microservice_productnote:
+  mysqlserver_sale:
+  microservice_salesmandb:

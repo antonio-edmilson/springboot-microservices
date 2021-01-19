@@ -12,7 +12,7 @@ spring:
         dialect: org.hibernate.dialect.MySQL8Dialect
 
   datasource:
-    url: jdbc:mysql://localhost:3310/salesmandb?allowPublicKeyRetrieval=true&sslMode=DISABLED
+    url: jdbc:mysql://mysqlserver-salesmandb:3310/salesmandb?allowPublicKeyRetrieval=true&sslMode=DISABLED&createDatabaseIfNotExist=true
     username: root
     password: root
     
@@ -20,8 +20,9 @@ eureka:
   instance:
     prefer-ip-address: true
     appname: salesman
+    
   client:
     service-url:
-      defaultZone: http://localhost:9080/eureka/
+      defaultZone: http://discovery-eureka:9080/eureka/
     register-with-eureka: true
     fetch-registry: true

@@ -11,6 +11,6 @@ eureka:
     appname: gateway
   client:
     service-url:
-      defaultZone: http://localhost:9080/eureka/
+      defaultZone: http://discovery-eureka:9080/eureka/
     register-with-eureka: true
     fetch-registry: true

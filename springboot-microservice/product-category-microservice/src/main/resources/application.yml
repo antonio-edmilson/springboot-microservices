@@ -3,22 +3,23 @@ server:
   
 spring:
   application:
-    name: product
+    name: product-category
   jpa:
     hibernate:      ddl-auto: update
     properties:      hibernate:
         dialect: org.hibernate.dialect.MySQL8Dialect
   datasource:
-    url: jdbc:mysql://localhost:3309/product_categorydb?allowPublicKeyRetrieval=true&sslMode=DISABLED
+    url: jdbc:mysql:///mysqlserver-product_categorydb:3309/product_categorydb?allowPublicKeyRetrieval=true&sslMode=DISABLED&createDatabaseIfNotExist=true
     username: root
     password: root
     
 eureka:
   instance:
     prefer-ip-address: true
-    appname: product-category
+    appname: product_category
+    
   client:
     service-url:
-      defaultZone: http://localhost:9080/eureka/
+      defaultZone: http://discovery-eureka:9080/eureka/
     register-with-eureka: true
     fetch-registry: true

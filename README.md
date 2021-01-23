@@ -1,4 +1,4 @@
-# SPRING BOOT MICROCSERVICE USING SPRING CLOUD, EUREKA, AND ZUUL
+# SPRING BOOT MICROCSERVICE USANDO SPRING CLOUD, EUREKA, AND ZUUL
 
 Este projeto foi criado para exibir minhas habilidades no desenvolvimento de aplicações utilizando arquitetura de Microsserviços e as seguintes tecnologias abaixo.
 

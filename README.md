@@ -78,6 +78,9 @@ URI for Eureka : *http://localhost:9080*
 
 ## Build & Run
 
+Ambiente de desenvolvimento, descomentar as linhas nos arquivos application.yml com o cementario DEV
+- *> /mvnw spring-boot:run [a link] (https://spring.io/guides/gs/spring-boot/) o comando deve ser executado no diretório raiz do projeto.
+
 Executando aplicação com docker (Dockerfile) utilizando Maven.
 
 - *>mvn clean install* : Construindo aplicação(Obs: execute o comando dentro do diretoria de tosos os projetos.

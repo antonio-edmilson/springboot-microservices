@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Product market</title>
+        <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+        <link th:rel="stylesheet" th:href="@{webjars/bootstrap/4.5.3/css/bootstrap.min.css} "/>
+        <style>
+			.center {
+			  margin: auto;
+			  width: 50%;
+			  border: 3px solid #FF6347;
+			  padding: 10px;
+			}
+		</style>
+    </head>
+
+	<form action="#" 
+	  th:action="@{/update/{id}(id=${product.id})}" 
+	  th:object="${product}" 
+	  method="post" class="center">
+	  		<div class="form-group">
+			    <label for="name">Name</label>
+			    <input  class="form-control form-control-lg" type="text" th:field="*{name}" id="name" placeholder="Name" required="true">
+		    	<span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+		    </div>
+		    <div class="form-group">
+			    <label for="email">Description</label>
+			    <input class="form-control form-control-lg" type="text" th:field="*{description}" id="description" placeholder="Description product" required="true">
+				<span th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></span>
+			</div>
+			<div class="form-group">
+				<label for="category">Category</label>
+			    <select th:field="*{category}" id="category" class="form-control form-control-lg">
+				    <option th:each="i : ${categorys}" th:value="${i.name}" th:text="${i.name}">
+				    </option>
+				</select>
+		    	<span th:if="${#fields.hasErrors('category')}" th:errors="*{category}"></span>
+		    </div>
+		    <div class="form-group">
+			    <label for="price">Price</label>
+			    <input class="form-control form-control-lg" type="number" step="0.01" th:field="*{price}" id="price" placeholder="Price product" required="true">
+	   			<span th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></span>
+	   		</div>
+	   		<div class="float-right">
+	   			<input class="btn btn-primary" type="submit" value="Sell">   
+	   		</div>
+	   		<br/><br/><br/>
+	</form>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Product market</title>
+        <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+        <link th:rel="stylesheet" th:href="@{webjars/bootstrap/4.5.3/css/bootstrap.min.css} "/>
+        <style>
+			.header_table{
+				background-color: #FF6347; 
+				color :white; 
+				border: 1
+			}
+		</style>
+    </head>
+    <body>
+        
+        
+        
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+		    <div class="container">
+		        <a class="navbar-brand" href="/">Marketplace - Hotmart</a>
+		        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+		                aria-controls="navbarResponsive"
+		                aria-expanded="false" aria-label="Toggle navigation">
+		            <span class="navbar-toggler-icon"></span>
+		        </button>
+		        <div class="collapse navbar-collapse" id="navbarResponsive">
+		            <ul class="navbar-nav ml-auto">
+		                <li class="nav-item active">
+		                    <a class="nav-link" href="#">Products
+		                        <span class="sr-only"></span>
+		                    </a>
+		                </li>
+		                <li class="nav-item">
+		                    <a class="nav-link" href="#">Salesman</a>
+		                </li>
+		                <li class="nav-item">
+		                    <a class="nav-link" href="#">Customer</a>
+		                </li>
+		                <li class="nav-item">
+		                    <a class="nav-link" href="#">Sale</a>
+		                </li>
+		            </ul>
+		        </div>
+		    </div>
+		</nav>
+        
+        
+        <div th:switch="${products}">
+		    <h2 th:case="null">No productd yet!</h2>
+		        <div th:case="*">
+		            <h2>Products</h2>
+		            <div class="container">
+					    <div class="row">
+					        <div class="col-lg-10 mt-5 mb-5">
+					            <table class="table table-bordered" style="width: 100%">
+					                <thead>
+					                    <tr>
+					                        <th class="header_table">Name</th>
+					                        <th class="header_table">Description</th>
+						                    <th class="header_table">Price</th>
+						                    <th class="header_table">Category</th>
+						                    <th class="header_table">Score</th>
+						                    <th class="header_table">Creation date</th>
+						                    <th class="header_table" colspan="3">Action</th>
+					                    </tr>
+					                </thead>
+					                <tbody>
+					                <tr th:each="product : ${products}">
+					                    <td th:text="${product.name}"></td>
+					                    <td th:text="${product.description}"></td>
+					                    <td th:text="${product.price}"></td>
+					                    <td th:text="${product.category}"></td>
+					                    <td th:text="${product.score}"></td>
+					                    <td th:text="${product.creationDate}"></td>
+					                    <td><a th:href="@{/sell/{id}/{name}/{price}(id=${product.id}, name=${product.name}, price=${product.price})}">Sell</a></td>
+					                    <td><a th:href="@{/edit/{id}(id=${product.id})}">Edit</a></td>
+					                    <td><a th:href="@{/delete/{id}(id=${product.id})}">Delete</a></td>
+					                </tr>
+					            </tbody>
+					        </table>
+				       </div>
+			       </div>
+			       </div>
+		    </div> 
+		    <div class="float-right">
+		  		<div class="btn btn-primary" ><a href="/page-add-product" style="color:white">Add a new product</a></div> 
+		    </div>
+		</div>
+    </body>
+</html>

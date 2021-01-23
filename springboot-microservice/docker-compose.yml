@@ -1,6 +1,15 @@
 version: '3'
 
-services:  
+services:
+  marketplace-frontend: 
+    build:
+      context: ./marketplace-frontend
+      dockerfile: Dockerfile
+    image: marketplace-frontend
+    container_name: marketplace-frontend
+    ports:
+      - "9099:9099"
+    restart: always  
   discovery-eureka: 
     build:
       context: ./discovery-eureka
@@ -44,10 +53,10 @@ services:
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: root
       SPRING_DATASOURCE_DATABASE: productdb   
-      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://discovery-eureka:9080/eureka
     links:
       - mysqlserver-productdb
       - discovery-eureka
+      
   customer-microservice: 
     build:
       context: ./customer-microservice

@@ -1,0 +1,20 @@
+server:
+  port: 9099
+  
+spring:
+  application:
+    name: marketplace-frontend
+  
+eureka:
+  instance:
+    prefer-ip-address: true
+    appname: customer
+  client:
+    service-url:
+      #DEV
+      #defaultZone: http://localhost:9080/eureka/
+      #Docker
+      defaultZone: http://discovery-eureka:9080/eureka/
+    register-with-eureka: true
+    fetch-registry: true
+    

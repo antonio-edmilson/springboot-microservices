@@ -9,6 +9,9 @@ spring:
     properties:      hibernate:
         dialect: org.hibernate.dialect.MySQL8Dialect
   datasource:
+    #DEV
+    #url: jdbc:mysql://localhost:3311/productnotedb?allowPublicKeyRetrieval=true&sslMode=DISABLED
+    #Docker
     url: jdbc:mysql://mysqlserver-productnotedb:3311/productnotedb?allowPublicKeyRetrieval=true&sslMode=DISABLED
     username: root
     password: root
@@ -20,6 +23,9 @@ eureka:
     
   client:
     service-url:
+      #DEV
+      #defaultZone: http://localhost:9080/eureka/
+      #Docker
       defaultZone: http://discovery-eureka:9080/eureka/
     register-with-eureka: true
     fetch-registry: true

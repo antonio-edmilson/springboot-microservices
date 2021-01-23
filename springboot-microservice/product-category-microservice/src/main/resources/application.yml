@@ -9,7 +9,10 @@ spring:
     properties:      hibernate:
         dialect: org.hibernate.dialect.MySQL8Dialect
   datasource:
-    url: jdbc:mysql:///mysqlserver-product_categorydb:3309/product_categorydb?allowPublicKeyRetrieval=true&sslMode=DISABLED&createDatabaseIfNotExist=true
+    #DEV
+    #url: jdbc:mysql://localhost:3309/customerdb?allowPublicKeyRetrieval=true&sslMode=DISABLED&createDatabaseIfNotExist=true
+    #Docke
+    url: jdbc:mysql://mysqlserver-productcategorydb:3309/product_categorydb?allowPublicKeyRetrieval=true&sslMode=DISABLED&createDatabaseIfNotExist=true
     username: root
     password: root
     
@@ -20,6 +23,9 @@ eureka:
     
   client:
     service-url:
+      #DEV
+      #defaultZone: http://localhost:9080/eureka/
+      #Docker
       defaultZone: http://discovery-eureka:9080/eureka/
-    register-with-eureka: true
-    fetch-registry: true
+      register-with-eureka: true
+      fetch-registry: true

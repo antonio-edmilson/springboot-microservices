@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Sell Product market</title>
+        <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+        <link th:rel="stylesheet" th:href="@{webjars/bootstrap/4.5.3/css/bootstrap.min.css} "/>
+        <style>
+			.center {
+			  margin: auto;
+			  width: 50%;
+			  border: 3px solid #FF6347;
+			  padding: 10px;
+			}
+		</style>
+    </head>
+
+	<form action="#"
+	  th:action="@{/sell-product/{idProduct}/{idSalesman}/{idCustomer}/{price}(idProduct=${sell.idProduct}, idSalesman=${sell.idSalesman}, idCustomer=${sell.idCustomer}, price=${sell.price})}" 
+	  th:object="${sell}" 
+	  method="post" class="center">
+	  		<div class="form-group">
+			    <label for="name">Salesman</label>
+			    <input  class="form-control form-control-lg" type="text" th:field="*{nameSalesman}" id="salesman" required="required" disabled="disabled">
+		    </div>
+		    <div class="form-group">
+			    <label for="customer">Costumer</label>
+			    <input class="form-control form-control-lg" type="text" th:field="*{nameCustomer}" id="customer" required="required" disabled="disabled">
+			</div>
+			
+			<div class="form-group">
+			    <label for="product">Product</label>
+			    <input class="form-control form-control-lg" type="text" th:field="*{nameProduct}" id="product" required="required" disabled="disabled">
+			</div>
+			
+	   		<div class="float-right">
+	   			<input class="btn btn-primary" type="submit" value="Sell Product">   
+	   		</div>
+	   		<br/><br/><br/>
+	</form>
+</html>

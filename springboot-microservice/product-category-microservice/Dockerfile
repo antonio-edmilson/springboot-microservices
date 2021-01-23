@@ -14,4 +14,4 @@ SHELL ["/bin/sh", "-c"]
 
 EXPOSE 9094
 
-CMD java ${ADDITIONAL_OPTS} -jar product-category-microservice.jar --spring.profiles.active=${PROFILE}
+CMD java ${ADDITIONAL_OPTS} -jar .jar --spring.profiles.active=${PROFILE}

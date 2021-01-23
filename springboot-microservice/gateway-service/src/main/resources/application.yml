@@ -8,9 +8,12 @@ spring:
 eureka:
   instance:
     prefer-ip-address: true
-    appname: gateway
+    appname: gateway   
   client:
     service-url:
+      #DEV
+      #defaultZone: http://localhost:9080/eureka/
+      #Docker
       defaultZone: http://discovery-eureka:9080/eureka/
     register-with-eureka: true
     fetch-registry: true

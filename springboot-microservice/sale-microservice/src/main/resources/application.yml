@@ -24,8 +24,8 @@ eureka:
   client:
     service-url:
       #DEV
-      defaultZone: http://localhost:9080/eureka/
+      #defaultZone: http://localhost:9080/eureka/
       #Docker
-      #defaultZone: http://discovery-eureka:9080/eureka/
+      defaultZone: http://discovery-eureka:9080/eureka/
     register-with-eureka: true
     fetch-registry: true

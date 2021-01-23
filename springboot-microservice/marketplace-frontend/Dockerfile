@@ -8,7 +8,7 @@ ENV ADDITIONAL_OPTS=${ADDITIONAL_OPTS}
 
 WORKDIR /app
 
-COPY /target/*marketplace-frontend*.jar /app/marketplace-frontend.jar
+COPY /target/marketplace-frontend-0.0.1-SNAPSHOT.jar /app/marketplace-frontend.jar
 
 SHELL ["/bin/sh", "-c"]
 

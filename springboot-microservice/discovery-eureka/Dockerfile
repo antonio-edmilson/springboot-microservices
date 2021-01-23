@@ -8,7 +8,7 @@ ENV ADDITIONAL_OPTS=${ADDITIONAL_OPTS}
 
 WORKDIR /app
 
-COPY /target/discovery-eureka*.jar /app/discovery-eureka.jar
+COPY /target/discovery-eureka-0.0.1-SNAPSHOT.jar /app/discovery-eureka.jar
 
 SHELL ["/bin/sh", "-c"]
 

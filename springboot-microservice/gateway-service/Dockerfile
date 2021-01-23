@@ -8,7 +8,7 @@ ENV ADDITIONAL_OPTS=${ADDITIONAL_OPTS}
 
 WORKDIR /app
 
-COPY /target/gateway-service*.jar /app/gateway-service.jar
+COPY /target/gateway-service-0.0.1-SNAPSHOT.jar /app/gateway-service.jar
 
 SHELL ["/bin/sh", "-c"]
 

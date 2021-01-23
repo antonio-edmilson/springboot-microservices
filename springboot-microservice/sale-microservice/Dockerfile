@@ -8,7 +8,7 @@ ENV ADDITIONAL_OPTS=${ADDITIONAL_OPTS}
 
 WORKDIR /app
 
-COPY /target/sale-microservice*.jar /app/sale-microservice.jar
+COPY /target/sale-microservice-0.0.1-SNAPSHOT.jar /app/sale-microservice.jar
 
 SHELL ["/bin/sh", "-c"]
 

@@ -12,6 +12,6 @@ COPY /target/product-notes-microservice-0.0.1-SNAPSHOT.jar /app/product-notes-mi
 
 SHELL ["/bin/sh", "-c"]
 
-EXPOSE 9094
+EXPOSE 9095
 
 CMD java ${ADDITIONAL_OPTS} -jar product-notes-microservice.jar --spring.profiles.active=${PROFILE}

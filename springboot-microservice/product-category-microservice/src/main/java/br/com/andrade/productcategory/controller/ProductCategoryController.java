@@ -17,7 +17,7 @@ import br.com.andrade.productcategory.service.CategoryService;
 import br.com.andrade.productcategory.service.NewsApiService;
 
 @RestController
-@RequestMapping(value = "/api/v1/product-caretory")
+@RequestMapping(value = "/api/v1/product-category")
 public class ProductCategoryController {
 	
 	@Autowired

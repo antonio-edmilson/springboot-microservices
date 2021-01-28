@@ -9,10 +9,10 @@ import br.com.andrade.product.response.NoteAverageResponse;
 public class ApiProductCategoryRepository {
 	
 	private final String URI_PRODUCTAPI = "http://localhost:9094";
-	private final String ENDPOINT_PRODUCTAPI = "/api/v1/product-caretory/amount-news/";
+	private final String ENDPOINT_PRODUCTAPI = "/api/v1/product-category/amount-news/";
 	
 	public Integer getAmountNewsByCategory(String category) {
-		String uri = URI_PRODUCTAPI + ENDPOINT_PRODUCTAPI + "/"+ category;
+		String uri = URI_PRODUCTAPI + ENDPOINT_PRODUCTAPI + category;
 		RestTemplate restTemplate = new RestTemplate();
 	    return restTemplate.getForObject(uri,  Integer.class);
 	}

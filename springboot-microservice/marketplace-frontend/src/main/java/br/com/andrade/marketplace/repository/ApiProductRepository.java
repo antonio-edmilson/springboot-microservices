@@ -17,8 +17,8 @@ import br.com.andrade.marketplace.response.ProductSearchResponse;
 @Repository
 public class ApiProductRepository extends ApiUtilsRepository {
 	
-	private final String URI_PRODUCTAPI = "http://localhost:9090";
-	private final String ENDPOINT_PRODUCTAPI = "/api/v1/product";
+	private final String URI_PRODUCTAPI = "http://localhost:8080";
+	private final String ENDPOINT_PRODUCTAPI = "/product/api/v1/product";
 	
 	public ProductResponse findBy(Long id) {
 		String parameter = "/findBy?idproduct="+id;

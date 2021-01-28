@@ -4,10 +4,12 @@ spring:
  
 server:
   port: 9080
+  address: localhost  #DEV
+  #address: discovery-eureka #Docker
   
 eureka:
   client:
     register-with-eureka: false
     fetch-registry: false
     service-url:
-      defaultZone: http://discovery-eureka:${server.port}/eureka/
+      defaultZone: http://localhost:${server.port}/eureka/

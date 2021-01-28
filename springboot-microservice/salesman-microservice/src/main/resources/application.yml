@@ -13,9 +13,9 @@ spring:
 
   datasource:
     #DEV
-    #url: jdbc:mysql://localhost:3310/salesmandb?allowPublicKeyRetrieval=true&sslMode=DISABLED&createDatabaseIfNotExist=true
+    url: jdbc:mysql://localhost:3310/salesmandb?allowPublicKeyRetrieval=true&sslMode=DISABLED&createDatabaseIfNotExist=true
     #Docker
-    url: jdbc:mysql://mysqlserver-salesmandb:3310/salesmandb?allowPublicKeyRetrieval=true&sslMode=DISABLED&createDatabaseIfNotExist=true
+    #url: jdbc:mysql://mysqlserver-salesmandb:3310/salesmandb?allowPublicKeyRetrieval=true&sslMode=DISABLED&createDatabaseIfNotExist=true
     username: root
     password: root
     
@@ -27,8 +27,8 @@ eureka:
   client:
     service-url:
       #DEV
-      #defaultZone: http://localhost:9080/eureka/
+      defaultZone: http://localhost:9080/eureka/
       #Docker
-      defaultZone: http://discovery-eureka:9080/eureka/
+      #defaultZone: http://discovery-eureka:9080/eureka/
     register-with-eureka: true
     fetch-registry: true

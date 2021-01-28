@@ -84,7 +84,7 @@ public class ProductController {
 	}
 	
 	@GetMapping("/index")
-	public String showUserList(Model model) {
+	public String showProductList(Model model) {
 		model.addAttribute("products", apiProductService.findByExampleOrderScoreNameCategory(new HashMap<>()).getProducts());
 	    return "index";
 	}

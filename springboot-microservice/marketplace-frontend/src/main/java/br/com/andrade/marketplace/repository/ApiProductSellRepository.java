@@ -10,8 +10,8 @@ import br.com.andrade.marketplace.response.ProductSearchResponse;
 @Repository
 public class ApiProductSellRepository extends ApiUtilsRepository {
 	
-	private final String URI_PRODUCTAPI = "http://localhost:9091";
-	private final String ENDPOINT_PRODUCTAPI = "/api/v1/sale";
+	private final String URI_PRODUCTAPI = "http://localhost:8080";
+	private final String ENDPOINT_PRODUCTAPI = "/sale/api/v1/sale";
 	
 	public SellRequest sellProduct(SellRequest sellRequest) { 
 		RestTemplate restTemplate = new RestTemplate();

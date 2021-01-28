@@ -12,7 +12,7 @@ public class ApiProductCategoryService {
 	private ApiProductCategoryRepository apiProductCategoryRepository;
 	
 	public Integer getAmountNewsByCategory(String category) {
-		Integer amountNewsByCategory =  apiProductCategoryRepository.getAmountNewsByCategory(category);
+		Integer amountNewsByCategory = (Integer) apiProductCategoryRepository.getAmountNewsByCategory(category);
 		return amountNewsByCategory != null ? amountNewsByCategory : 0;
 	}
 

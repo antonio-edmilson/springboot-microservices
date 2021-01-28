@@ -8,8 +8,8 @@ import br.com.andrade.product.response.NoteAverageResponse;
 @Repository
 public class ApiSaleRepository {
 	
-	private final String URI_PRODUCTAPI = "http://localhost:9091";
-	private final String ENDPOINT_PRODUCTAPI = "/api/v1/sale";
+	private final String URI_PRODUCTAPI = "http://localhost:8080";
+	private final String ENDPOINT_PRODUCTAPI = "/sale/api/v1/sale";
 	
 	public Long getAmountSalesByProduct(Long idProduct) {
 		String uri = URI_PRODUCTAPI + ENDPOINT_PRODUCTAPI + "/"+ idProduct;

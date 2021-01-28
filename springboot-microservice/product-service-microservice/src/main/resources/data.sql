@@ -98,7 +98,7 @@ INSERT INTO tb_product (id_product, category, creation_date, name, description, 
 INSERT INTO tb_product (id_product, category, creation_date, name, description, price) VALUES (98, 'spots', CURRENT_DATE, 'description prodcut 7', 'Product 14', 150.00);
 INSERT INTO tb_product (id_product, category, creation_date, name, description, price) VALUES (99, 'spots', CURRENT_DATE, 'description prodcut 1', 'Product 2', 150.00);
 INSERT INTO tb_product (id_product, category, creation_date, name, description, price) VALUES (100, 'spots', CURRENT_DATE, 'description prodcut 2', 'Product 2', 150.00);
-
+ALTER TABLE tb_product AUTO_INCREMENT = 101;
 
 
 
